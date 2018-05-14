@@ -5,7 +5,14 @@
         <label for="first_name" class="col-4 col-form-label">First Name</label>
         <div class="col-8">
           <div class="input-group">
-            <input id="first_name" name="first_name" type="text" required="required" class="form-control here" v-model="contact.first_name">
+            <input 
+            id="first_name"
+             name="first_name" 
+             type="text" 
+             required="required" 
+             class="form-control 
+             here" v-model="contact.first_name"
+             v-focus>
           </div>
         </div>
       </div>
@@ -36,7 +43,11 @@
           <button name="submit" type="submit" class="btn btn-primary">Submit</button>
         </div>
       </div>
+      
     </form>
+    <div v-demo= "'EEEE'">
+        
+      </div>
   </div>
 </template>
 
