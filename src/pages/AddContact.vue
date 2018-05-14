@@ -31,7 +31,7 @@
         <div class="col-8">
           <input id="email" 
           name="email" 
-          type="email" 
+          type="text" 
           
           class="form-control 
           here" v-model="contact.email">

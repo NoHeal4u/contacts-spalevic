@@ -22,7 +22,10 @@ const MyDirectives = {
 					EMAIL: 'email'
 				}
 
+				const MESSAGES_CLASSNAME = 'validator-messages'
+
 				let validationRules = binding.value 
+
 
 				// console.log(validationRules, 'validationRules')
 
@@ -30,11 +33,21 @@ const MyDirectives = {
 					event.preventDefault()
 					// console.log('event', event, validationRules)
 					Object.keys(validationRules).forEach(key=>{
-						if(validationRules[key].indexOf(RULES.REQUIRED) > -1){
+						let input = element.querySelector(`#${key}`)
+						if (!input) {
+							throw new Error(`Input element for validation rule ${key} not found`)
+						}
+						if(validationRules[key].indexOf(RULES.REQUIRED) > -1 && !input.value.length){
 							let messageElement = document.createElement('div')
+							messageElement.id = MESSAGES_CLASSNAME
+							let oldMessageElement = element.querySelector(`#${MESSAGES_CLASSNAME}`)
+							if (oldMessageElement) {
+								oldMessageElement.remove()
+							}
+
 							messageElement.innerHTML = `${key.toUpperCase()} field is required`
 							element.appendChild(messageElement)
-						}
+						} 
 					});
 					
 				})
